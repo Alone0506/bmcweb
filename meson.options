@@ -589,3 +589,15 @@ option(
                     parameters such as only are not controlled by this option.''',
 )
 
+# BMCWEB_IPMI_STATIC_SENSOR
+option(
+    'ipmi-static-sensor',
+    type: 'feature',
+    value: 'enabled',
+    description: '''Show IPMI SDR sensors on the web.
+                    When enabled, bmcweb calls the IPMI host D-Bus method
+                    getSensorList to retrieve the list of IPMI sensors defined
+                    in the YAML file, and only displays sensors included in 
+                    that list.''',
+)
+
