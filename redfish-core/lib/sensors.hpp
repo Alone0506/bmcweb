@@ -2566,8 +2566,9 @@ inline void handleSensorGet(App& app, const crow::Request& req,
             {
                 if constexpr (BMCWEB_IPMI_STATIC_SENSOR)
                 {
-                    // Return a minimal disabled Sensor payload for static
-                    // definitions even when the backing D-Bus sensor is absent.
+                    // To stay sync with the IPMI SDR, it should be
+                    // displayed as disabled even if it is not present on
+                    // D-Bus.
                     asyncResp->res.jsonValue["@odata.type"] =
                         "#Sensor.v1_11_1.Sensor";
                     asyncResp->res.jsonValue["Id"] = sensorId;
@@ -2580,8 +2581,6 @@ inline void handleSensorGet(App& app, const crow::Request& req,
                         asyncResp->res.jsonValue["Name"] =
                             ipmiSensorPathName[sensorPath];
                     }
-                    asyncResp->res.jsonValue["Status"]["Health"] =
-                        resource::Health::Invalid;
                     asyncResp->res.jsonValue["Status"]["State"] =
                         resource::State::Disabled;
                     return;
