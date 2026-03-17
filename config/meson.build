@@ -20,7 +20,6 @@ feature_options = [
     'insecure-enable-redfish-query',
     'insecure-ignore-content-type',
     'insecure-push-style-notification',
-    'ipmi-static-sensor',
     'kvm',
     'mutual-tls-auth',
     'redfish',
